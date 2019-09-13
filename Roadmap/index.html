@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+<style>
+    .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 3px;
+    }
+
+    .node text {
+        font: 12px sans-serif;
+    }
+
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 2px;
+    }
+</style>
+
+<body>
+    <!-- load the d3.js library -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script>
+        var treeData = {
+			name: 'ASP.NET Core Developer in 2019',
+			children: [
+				{
+					name: 'C#',
+					children: [
+						{ name: 'Learn LINQ' },
+						{ name: 'Learn the basics of C#' },
+					],
+				},
+				{
+					name: 'entity framework',
+					children: [
+						{ name: 'code first + migrations' },
+						{ name: 'learn the basics of entity framework' },
+						{ name: 'change tracker api' },
+						{ name: 'lazy loading, eager loading, explicit loading' },
+					],
+				},
+				{
+					name: 'ASP.NET Core Basics',
+					children: [
+						{ name: 'MVC' },
+						{ name:'REST' },
+						{ name: 'Razor Pages' },
+						{ name: 'Razor Components' },
+						{ name: 'Middlewares' },
+						{ name: 'Filters & Attributes' },
+					],
+				},
+				{
+					name: 'SQL Fundamentals',
+					children: [
+						{ name: 'Fundamentals about database design and SQL Syntax' },
+					],
+				},
+				{
+					name: 'General Development Skills',
+					children: [
+						{ name: 'GIT - Version Control (VSTS, GitHub, GitLab)' },
+						{ name: 'HTTP/HTTPS protocol' },
+						{ name: 'Learn to search for solutions' },
+						{ name: 'Learn dotnet CLI' },
+						{ name: 'Data Structures and Algorithms' },
+					],
+				},
+				{
+					name: 'Dependency Injection',
+					children: [
+						{
+							name: 'DI Containers',
+							children: [
+								{ name: 'Microsoft.Extensions. DependencyInjection' },
+								{ name: 'AutoFac' },
+								{ name: 'Ninject' },
+								{ name: 'Structure Map' },
+								{ name: 'Castle Windsor' },
+							],
+						},
+						{
+							name: 'Life Cycles',
+							children: [
+								{ name: 'Transient' },
+								{ name: 'Scoped' },
+								{ name: 'Singleton' },
+							],
+						},
+						{ name: 'Scrutor' },
+					],
+				},
+				{
+					name: 'Databases',
+					children: [
+						{
+							name: 'Relational',
+							children: [
+								{ name: 'SQL Server' },
+								{ name: 'PostgreSQL' },
+								{ name: 'MariaDB' },
+								{ name: 'MySQL' },
+							],
+						},
+						{
+							name: 'Cloud Databases',
+							children: [
+								{ name: 'Azure CosmosDB' },
+								{ name: 'Amazon DynamoDB' },
+							],
+						},
+						{
+							name: 'Search Engines',
+							children: [
+								{ name: 'ElasticSearch' },
+								{ name: 'Solr' },
+								{ name: 'Sphinx' },
+							],
+						},
+						{
+							name: 'NoSQL',
+							children: [
+								{ name: 'MongoDB' },
+								{ name: 'Redis' },
+								{ name: 'LiteDB' },
+								{ name: 'Apache Cassandra' },
+								{ name: 'RavenDB' },
+								{ name: 'CouchDB' },
+							],
+						},
+					],
+				},
+				{
+					name: 'Caching',
+					children: [
+						{ name: 'Entity Framework 2nd Level Cache' },
+						{ name: 'Memory Cache' },
+						{
+							name: 'Distributed Cache',
+							children: [
+								{ name: 'Redis' },
+								{ name: 'Memcached' },
+							],
+						},
+					],
+				},
+				{
+					name: 'Log Frameworks',
+					children: [
+						{ name: 'log4net' },
+						{ name: 'Serilog' },
+						{ name: 'NLog' },
+						{ name: 'Elmah' },
+						{
+							name: 'Log Management System',
+							children: [
+								{ name: 'Sentry.io' },
+								{ name: 'loggly.com' },
+								{ name: 'elmah.io' },
+							],
+						},
+					],
+				},
+				{
+					name: 'Real-Time Communication',
+					children: [
+						{ name: 'SignalR' },
+					],
+				},
+				{
+					name: 'Object Mapping',
+					children: [
+						{ name: 'AutoMapper' },
+						{ name: 'Mapster' },
+						{ name: 'AgileMapper' },
+						{ name: 'ExpressMapper' },
+					],
+				},
+				{
+					name: 'API Clients',
+					children: [
+						{
+							name: 'REST',
+							children: [
+								{ name: 'OData' },
+								{ name: 'Sieve' },
+							],
+						},
+						{
+							name: 'GraphQL',
+							children: [
+								{ name: 'GraphQL-dotnet' },
+							],
+						},
+					],
+				},
+				{
+					name: 'Good to Know Libraries',
+					children: [
+						{ name: 'MediatR' },
+						{ name: 'FluentValidation' },
+						{ name: 'Swashbuckle' },
+						{ name: 'Benchmark.NET' },
+						{ name: 'Polly' },
+						{ name: 'NodaTime' },
+						{ name: 'GenFu' },
+					],
+				},
+				{
+					name: 'Task Scheduling',
+					children: [
+						{ name: 'HangFire' },
+						{ name: 'Coravel' },
+						{ name: 'Fluent Scheduler' },
+					],
+				},
+				{
+					name: 'Testing',
+					children: [
+						{
+							name: 'Unit Testing',
+							children: [
+								{
+									name: 'Frameworks',
+									children: [
+										{ name: 'MSTest' },
+										{ name: 'NUnit' },
+										{ name: 'xUnit' },
+									],
+								},
+								{
+									name: 'Mocking',
+									children: [
+										{ name: 'Moq' },
+										{ name: 'NSubstitute' },
+										{ name: 'FakeItEasy' },
+									],
+								},
+								{
+									name: 'Assertion',
+									children: [
+										{ name: 'FluentAssertions' },
+										{ name: 'Shouldly' },
+									],
+								},
+							],
+						},
+						{
+							name: 'Behavior Testing',
+							children: [
+								{ name: 'BDDfy' },
+								{ name: 'SpecFlow' },
+								{ name: 'LightBDD' },
+							],
+						},
+						{
+							name: 'Integration Testing',
+							children: [
+								{ name: 'WebApplicationFactory' },
+								{ name: 'TestServer' },
+							],
+						},
+						{
+							name: 'E2E Testing',
+							children: [
+								{ name: 'Selenium' },
+								{ name: 'Puppeteer Sharp' },
+							],	
+						},
+					],
+				},
+				{
+					name: 'MicroServices',
+					children: [
+						{
+							name: 'Message-Broker',
+							children: [
+								{ name: 'RabbitMQ' },
+								{ name: 'Apache Kafka' },
+								{ name: 'ActiveMQ' },
+								{ name: 'Azure Service Bus'	},
+							],
+						},
+						{
+							name: 'Message-Bus',
+							children: [
+								{ name: 'MassTransit' },
+								{ name: 'NServiceBus' },
+								{ name: 'CAP' },
+							],
+						},
+					],
+				},
+				{
+					name: 'Principle of software development',
+					children: [
+						{ name: 'YAGNI: You ain’t gonna need it' },
+						{ name: 'SoC: Separation of Concerns' },
+						{ name: 'TDA: Tell don’t ask' },
+						{ name: 'DRY : Do not repeat yourself' },
+						{ name: 'KISS : Keep it simple stupid' },
+						{
+							name: 'SOLID',
+							children: [
+								{ name: 'Single Responsibility Priniciple ( SRP )' },
+								{ name: 'Open-Closed Principle (OCP)' },
+								{ name: 'Liskov Substitution Principle (LSP)' },
+								{ name: 'Dependency Inversion Principle (DIP)' },
+								{ name: 'Interface Segregation Principle (ISP)' },
+							],
+						},
+					],
+				},
+				{
+					name: 'Design Patterns',
+					children: [
+						{ name: 'CQRS' },
+						{ name: 'Decorator' },
+						{ name: 'Strategy' },
+						{ name: 'Observer' },
+						{ name: 'Builder' },
+						{ name: 'Singleton' },
+						{ name: 'Facade' },
+						{ name: 'Mediator' },
+					],
+				},
+			],	
+		};
+
+        // Set the dimensions and margins of the diagram
+        var margin = { top: 20, right: 90, bottom: 30, left: 90 },
+            width = 2500 - margin.left - margin.right,
+            height = 1080 - margin.top - margin.bottom;
+
+        // append the svg object to the body of the page
+        // appends a 'group' element to 'svg'
+        // moves the 'group' element to the top left margin
+        var svg = d3
+            .select('body')
+            .append('svg')
+            .attr('width', width + margin.right + margin.left)
+            .attr('height', height + margin.top + margin.bottom)
+            .append('g')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+        var i = 0,
+            duration = 750,
+            root;
+
+        // declares a tree layout and assigns the size
+        var treemap = d3.tree().size([height, width]);
+
+        // Assigns parent, children, height, depth
+        root = d3.hierarchy(treeData, function(d) {
+            return d.children;
+        });
+        root.x0 = height / 2;
+        root.y0 = 0;
+
+        // Collapse after the second level
+        // root.children.forEach(collapse);
+
+        update(root);
+
+        // Collapse the node and all it's children
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
+
+        function update(source) {
+            // Assigns the x and y position for the nodes
+            var treeData = treemap(root);
+
+            // Compute the new tree layout.
+            var nodes = treeData.descendants(),
+                links = treeData.descendants().slice(1);
+
+            // Normalize for fixed-depth.
+            nodes.forEach(function(d) {
+                d.y = d.depth * 180;
+            });
+
+            // ****************** Nodes section ***************************
+
+            // Update the nodes...
+            var node = svg.selectAll('g.node').data(nodes, function(d) {
+                return d.id || (d.id = ++i);
+            });
+
+            // Enter any new modes at the parent's previous position.
+            var nodeEnter = node
+                .enter()
+                .append('g')
+                .attr('class', 'node')
+                .attr('transform', function(d) {
+                    return 'translate(' + source.y0 + ',' + source.x0 + ')';
+                })
+                .on('click', click);
+
+            // Add Circle for the nodes
+            nodeEnter
+                .append('circle')
+                .attr('class', 'node')
+                .attr('r', 1e-6)
+                .style('fill', function(d) {
+                    return d._children ? 'lightsteelblue' : '#fff';
+                });
+
+            // Add labels for the nodes
+            nodeEnter
+                .append('text')
+                .attr('dy', '.35em')
+                .attr('x', function(d) {
+                    return d.children || d._children ? -13 : 13;
+                })
+                .attr('text-anchor', function(d) {
+                    return d.children || d._children ? 'end' : 'start';
+                })
+                .text(function(d) {
+                    return d.data.name;
+                });
+
+            // UPDATE
+            var nodeUpdate = nodeEnter.merge(node);
+
+            // Transition to the proper position for the node
+            nodeUpdate
+                .transition()
+                .duration(duration)
+                .attr('transform', function(d) {
+                    return 'translate(' + d.y + ',' + d.x + ')';
+                });
+
+            // Update the node attributes and style
+            nodeUpdate
+                .select('circle.node')
+                .attr('r', 10)
+                .style('fill', function(d) {
+                    return d._children ? 'lightsteelblue' : '#fff';
+                })
+                .attr('cursor', 'pointer');
+
+            // Remove any exiting nodes
+            var nodeExit = node
+                .exit()
+                .transition()
+                .duration(duration)
+                .attr('transform', function(d) {
+                    return 'translate(' + source.y + ',' + source.x + ')';
+                })
+                .remove();
+
+            // On exit reduce the node circles size to 0
+            nodeExit.select('circle').attr('r', 1e-6);
+
+            // On exit reduce the opacity of text labels
+            nodeExit.select('text').style('fill-opacity', 1e-6);
+
+            // ****************** links section ***************************
+
+            // Update the links...
+            var link = svg.selectAll('path.link').data(links, function(d) {
+                return d.id;
+            });
+
+            // Enter any new links at the parent's previous position.
+            var linkEnter = link
+                .enter()
+                .insert('path', 'g')
+                .attr('class', 'link')
+                .attr('d', function(d) {
+                    var o = { x: source.x0, y: source.y0 };
+                    return diagonal(o, o);
+                });
+
+            // UPDATE
+            var linkUpdate = linkEnter.merge(link);
+
+            // Transition back to the parent element position
+            linkUpdate
+                .transition()
+                .duration(duration)
+                .attr('d', function(d) {
+                    return diagonal(d, d.parent);
+                });
+
+            // Remove any exiting links
+            var linkExit = link
+                .exit()
+                .transition()
+                .duration(duration)
+                .attr('d', function(d) {
+                    var o = { x: source.x, y: source.y };
+                    return diagonal(o, o);
+                })
+                .remove();
+
+            // Store the old positions for transition.
+            nodes.forEach(function(d) {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+
+            // Creates a curved (diagonal) path from parent to the child nodes
+            function diagonal(s, d) {
+                path = `M ${s.y} ${s.x}
+                    C ${(s.y + d.y) / 2} ${s.x},
+                      ${(s.y + d.y) / 2} ${d.x},
+                      ${d.y} ${d.x}`;
+
+                return path;
+            }
+
+            // Toggle children on click.
+            function click(d) {
+                if (d.children) {
+                    d._children = d.children;
+                    d.children = null;
+                } else {
+                    d.children = d._children;
+                    d._children = null;
+                }
+                update(d);
+            }
+        }
+    </script>
+</body>
