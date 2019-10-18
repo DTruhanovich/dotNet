@@ -23,311 +23,553 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script>
         var treeData = {
-			name: 'ASP.NET Core Developer in 2019',
-			children: [
-				{
-					name: 'C#',
-					children: [
-						{ name: 'Learn LINQ' },
-						{ name: 'Learn the basics of C#' },
-					],
-				},
-				{
-					name: 'entity framework',
-					children: [
-						{ name: 'code first + migrations' },
-						{ name: 'learn the basics of entity framework' },
-						{ name: 'change tracker api' },
-						{ name: 'lazy loading, eager loading, explicit loading' },
-					],
-				},
-				{
-					name: 'ASP.NET Core Basics',
-					children: [
-						{ name: 'MVC' },
-						{ name:'REST' },
-						{ name: 'Razor Pages' },
-						{ name: 'Razor Components' },
-						{ name: 'Middlewares' },
-						{ name: 'Filters & Attributes' },
-					],
-				},
-				{
-					name: 'SQL Fundamentals',
-					children: [
-						{ name: 'Fundamentals about database design and SQL Syntax' },
-					],
-				},
-				{
-					name: 'General Development Skills',
-					children: [
-						{ name: 'GIT - Version Control (VSTS, GitHub, GitLab)' },
-						{ name: 'HTTP/HTTPS protocol' },
-						{ name: 'Learn to search for solutions' },
-						{ name: 'Learn dotnet CLI' },
-						{ name: 'Data Structures and Algorithms' },
-					],
-				},
-				{
-					name: 'Dependency Injection',
-					children: [
-						{
-							name: 'DI Containers',
-							children: [
-								{ name: 'Microsoft.Extensions. DependencyInjection' },
-								{ name: 'AutoFac' },
-								{ name: 'Ninject' },
-								{ name: 'Structure Map' },
-								{ name: 'Castle Windsor' },
-							],
-						},
-						{
-							name: 'Life Cycles',
-							children: [
-								{ name: 'Transient' },
-								{ name: 'Scoped' },
-								{ name: 'Singleton' },
-							],
-						},
-						{ name: 'Scrutor' },
-					],
-				},
-				{
-					name: 'Databases',
-					children: [
-						{
-							name: 'Relational',
-							children: [
-								{ name: 'SQL Server' },
-								{ name: 'PostgreSQL' },
-								{ name: 'MariaDB' },
-								{ name: 'MySQL' },
-							],
-						},
-						{
-							name: 'Cloud Databases',
-							children: [
-								{ name: 'Azure CosmosDB' },
-								{ name: 'Amazon DynamoDB' },
-							],
-						},
-						{
-							name: 'Search Engines',
-							children: [
-								{ name: 'ElasticSearch' },
-								{ name: 'Solr' },
-								{ name: 'Sphinx' },
-							],
-						},
-						{
-							name: 'NoSQL',
-							children: [
-								{ name: 'MongoDB' },
-								{ name: 'Redis' },
-								{ name: 'LiteDB' },
-								{ name: 'Apache Cassandra' },
-								{ name: 'RavenDB' },
-								{ name: 'CouchDB' },
-							],
-						},
-					],
-				},
-				{
-					name: 'Caching',
-					children: [
-						{ name: 'Entity Framework 2nd Level Cache' },
-						{ name: 'Memory Cache' },
-						{
-							name: 'Distributed Cache',
-							children: [
-								{ name: 'Redis' },
-								{ name: 'Memcached' },
-							],
-						},
-					],
-				},
-				{
-					name: 'Log Frameworks',
-					children: [
-						{ name: 'log4net' },
-						{ name: 'Serilog' },
-						{ name: 'NLog' },
-						{ name: 'Elmah' },
-						{
-							name: 'Log Management System',
-							children: [
-								{ name: 'Sentry.io' },
-								{ name: 'loggly.com' },
-								{ name: 'elmah.io' },
-							],
-						},
-					],
-				},
-				{
-					name: 'Real-Time Communication',
-					children: [
-						{ name: 'SignalR' },
-					],
-				},
-				{
-					name: 'Object Mapping',
-					children: [
-						{ name: 'AutoMapper' },
-						{ name: 'Mapster' },
-						{ name: 'AgileMapper' },
-						{ name: 'ExpressMapper' },
-					],
-				},
-				{
-					name: 'API Clients',
-					children: [
-						{
-							name: 'REST',
-							children: [
-								{ name: 'OData' },
-								{ name: 'Sieve' },
-							],
-						},
-						{
-							name: 'GraphQL',
-							children: [
-								{ name: 'GraphQL-dotnet' },
-							],
-						},
-					],
-				},
-				{
-					name: 'Good to Know Libraries',
-					children: [
-						{ name: 'MediatR' },
-						{ name: 'FluentValidation' },
-						{ name: 'Swashbuckle' },
-						{ name: 'Benchmark.NET' },
-						{ name: 'Polly' },
-						{ name: 'NodaTime' },
-						{ name: 'GenFu' },
-					],
-				},
-				{
-					name: 'Task Scheduling',
-					children: [
-						{ name: 'HangFire' },
-						{ name: 'Coravel' },
-						{ name: 'Fluent Scheduler' },
-					],
-				},
-				{
-					name: 'Testing',
-					children: [
-						{
-							name: 'Unit Testing',
-							children: [
-								{
-									name: 'Frameworks',
-									children: [
-										{ name: 'MSTest' },
-										{ name: 'NUnit' },
-										{ name: 'xUnit' },
-									],
-								},
-								{
-									name: 'Mocking',
-									children: [
-										{ name: 'Moq' },
-										{ name: 'NSubstitute' },
-										{ name: 'FakeItEasy' },
-									],
-								},
-								{
-									name: 'Assertion',
-									children: [
-										{ name: 'FluentAssertions' },
-										{ name: 'Shouldly' },
-									],
-								},
-							],
-						},
-						{
-							name: 'Behavior Testing',
-							children: [
-								{ name: 'BDDfy' },
-								{ name: 'SpecFlow' },
-								{ name: 'LightBDD' },
-							],
-						},
-						{
-							name: 'Integration Testing',
-							children: [
-								{ name: 'WebApplicationFactory' },
-								{ name: 'TestServer' },
-							],
-						},
-						{
-							name: 'E2E Testing',
-							children: [
-								{ name: 'Selenium' },
-								{ name: 'Puppeteer Sharp' },
-							],	
-						},
-					],
-				},
-				{
-					name: 'MicroServices',
-					children: [
-						{
-							name: 'Message-Broker',
-							children: [
-								{ name: 'RabbitMQ' },
-								{ name: 'Apache Kafka' },
-								{ name: 'ActiveMQ' },
-								{ name: 'Azure Service Bus'	},
-							],
-						},
-						{
-							name: 'Message-Bus',
-							children: [
-								{ name: 'MassTransit' },
-								{ name: 'NServiceBus' },
-								{ name: 'CAP' },
-							],
-						},
-					],
-				},
-				{
-					name: 'Principle of software development',
-					children: [
-						{ name: 'YAGNI: You ain’t gonna need it' },
-						{ name: 'SoC: Separation of Concerns' },
-						{ name: 'TDA: Tell don’t ask' },
-						{ name: 'DRY : Do not repeat yourself' },
-						{ name: 'KISS : Keep it simple stupid' },
-						{
-							name: 'SOLID',
-							children: [
-								{ name: 'Single Responsibility Priniciple ( SRP )' },
-								{ name: 'Open-Closed Principle (OCP)' },
-								{ name: 'Liskov Substitution Principle (LSP)' },
-								{ name: 'Dependency Inversion Principle (DIP)' },
-								{ name: 'Interface Segregation Principle (ISP)' },
-							],
-						},
-					],
-				},
-				{
-					name: 'Design Patterns',
-					children: [
-						{ name: 'CQRS' },
-						{ name: 'Decorator' },
-						{ name: 'Strategy' },
-						{ name: 'Observer' },
-						{ name: 'Builder' },
-						{ name: 'Singleton' },
-						{ name: 'Facade' },
-						{ name: 'Mediator' },
-					],
-				},
-			],	
-		};
+  "name": "ASP.NET Core Developer in 2019",
+  "children": [
+    {
+      "name": "",
+      "children": [
+        {
+          "name": "C#",
+          "children": [
+            {
+              "name": "Learn LINQ"
+            },
+            {
+              "name": "Learn the basics of C#"
+            }
+          ]
+        },
+        {
+          "name": "entity framework",
+          "children": [
+            {
+              "name": "code first + migrations"
+            },
+            {
+              "name": "learn the basics of entity framework"
+            },
+            {
+              "name": "change tracker api"
+            },
+            {
+              "name": "lazy loading, eager loading, explicit loading"
+            }
+          ]
+        },
+        {
+          "name": "ASP.NET Core Basics",
+          "children": [
+            {
+              "name": "MVC"
+            },
+            {
+              "name": "REST"
+            },
+            {
+              "name": "Razor Pages"
+            },
+            {
+              "name": "Razor Components"
+            },
+            {
+              "name": "Middlewares"
+            },
+            {
+              "name": "Filters & Attributes"
+            }
+          ]
+        },
+        {
+          "name": "SQL Fundamentals",
+          "children": [
+            {
+              "name": "Fundamentals about database design and SQL Syntax"
+            }
+          ]
+        },
+        {
+          "name": "General Development Skills",
+          "children": [
+            {
+              "name": "GIT - Version Control (VSTS, GitHub, GitLab)"
+            },
+            {
+              "name": "HTTP/HTTPS protocol"
+            },
+            {
+              "name": "Learn to search for solutions"
+            },
+            {
+              "name": "Learn dotnet CLI"
+            },
+            {
+              "name": "Data Structures and Algorithms"
+            }
+          ]
+        },
+        {
+          "name": "",
+          "children": [
+            {
+              "name": "Dependency Injection",
+              "children": [
+                {
+                  "name": "DI Containers",
+                  "children": [
+                    {
+                      "name": "Microsoft.Extensions. DependencyInjection"
+                    },
+                    {
+                      "name": "AutoFac"
+                    },
+                    {
+                      "name": "Ninject"
+                    },
+                    {
+                      "name": "Structure Map"
+                    },
+                    {
+                      "name": "Castle Windsor"
+                    }
+                  ]
+                },
+                {
+                  "name": "Life Cycles",
+                  "children": [
+                    {
+                      "name": "Transient"
+                    },
+                    {
+                      "name": "Scoped"
+                    },
+                    {
+                      "name": "Singleton"
+                    }
+                  ]
+                },
+                {
+                  "name": "Scrutor"
+                }
+              ]
+            },
+            {
+              "name": "Databases",
+              "children": [
+                {
+                  "name": "Relational",
+                  "children": [
+                    {
+                      "name": "SQL Server"
+                    },
+                    {
+                      "name": "PostgreSQL"
+                    },
+                    {
+                      "name": "MariaDB"
+                    },
+                    {
+                      "name": "MySQL"
+                    }
+                  ]
+                },
+                {
+                  "name": "Cloud Databases",
+                  "children": [
+                    {
+                      "name": "Azure CosmosDB"
+                    },
+                    {
+                      "name": "Amazon DynamoDB"
+                    }
+                  ]
+                },
+                {
+                  "name": "Search Engines",
+                  "children": [
+                    {
+                      "name": "ElasticSearch"
+                    },
+                    {
+                      "name": "Solr"
+                    },
+                    {
+                      "name": "Sphinx"
+                    }
+                  ]
+                },
+                {
+                  "name": "NoSQL",
+                  "children": [
+                    {
+                      "name": "MongoDB"
+                    },
+                    {
+                      "name": "Redis"
+                    },
+                    {
+                      "name": "LiteDB"
+                    },
+                    {
+                      "name": "Apache Cassandra"
+                    },
+                    {
+                      "name": "RavenDB"
+                    },
+                    {
+                      "name": "CouchDB"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "",
+              "children": [
+                {
+                  "name": "Caching",
+                  "children": [
+                    {
+                      "name": "Entity Framework 2nd Level Cache"
+                    },
+                    {
+                      "name": "Memory Cache"
+                    },
+                    {
+                      "name": "Distributed Cache",
+                      "children": [
+                        {
+                          "name": "Redis"
+                        },
+                        {
+                          "name": "Memcached"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Log Frameworks",
+                  "children": [
+                    {
+                      "name": "log4net"
+                    },
+                    {
+                      "name": "Serilog"
+                    },
+                    {
+                      "name": "NLog"
+                    },
+                    {
+                      "name": "Elmah"
+                    },
+                    {
+                      "name": "Log Management System",
+                      "children": [
+                        {
+                          "name": "Sentry.io"
+                        },
+                        {
+                          "name": "loggly.com"
+                        },
+                        {
+                          "name": "elmah.io"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "",
+                  "children": [
+                    {
+                      "name": "Real-Time Communication",
+                      "children": [
+                        {
+                          "name": "SignalR"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Object Mapping",
+                      "children": [
+                        {
+                          "name": "AutoMapper"
+                        },
+                        {
+                          "name": "Mapster"
+                        },
+                        {
+                          "name": "AgileMapper"
+                        },
+                        {
+                          "name": "ExpressMapper"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "API Clients",
+                      "children": [
+                        {
+                          "name": "REST",
+                          "children": [
+                            {
+                              "name": "OData"
+                            },
+                            {
+                              "name": "Sieve"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "GraphQL",
+                          "children": [
+                            {
+                              "name": "GraphQL-dotnet"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Good to Know Libraries",
+                      "children": [
+                        {
+                          "name": "MediatR"
+                        },
+                        {
+                          "name": "FluentValidation"
+                        },
+                        {
+                          "name": "Swashbuckle"
+                        },
+                        {
+                          "name": "Benchmark.NET"
+                        },
+                        {
+                          "name": "Polly"
+                        },
+                        {
+                          "name": "NodaTime"
+                        },
+                        {
+                          "name": "GenFu"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Task Scheduling",
+                      "children": [
+                        {
+                          "name": "HangFire"
+                        },
+                        {
+                          "name": "Coravel"
+                        },
+                        {
+                          "name": "Fluent Scheduler"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Testing",
+                      "children": [
+                        {
+                          "name": "Unit Testing",
+                          "children": [
+                            {
+                              "name": "Frameworks",
+                              "children": [
+                                {
+                                  "name": "MSTest"
+                                },
+                                {
+                                  "name": "NUnit"
+                                },
+                                {
+                                  "name": "xUnit"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Mocking",
+                              "children": [
+                                {
+                                  "name": "Moq"
+                                },
+                                {
+                                  "name": "NSubstitute"
+                                },
+                                {
+                                  "name": "FakeItEasy"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Assertion",
+                              "children": [
+                                {
+                                  "name": "FluentAssertions"
+                                },
+                                {
+                                  "name": "Shouldly"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Behavior Testing",
+                          "children": [
+                            {
+                              "name": "BDDfy"
+                            },
+                            {
+                              "name": "SpecFlow"
+                            },
+                            {
+                              "name": "LightBDD"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Integration Testing",
+                          "children": [
+                            {
+                              "name": "WebApplicationFactory"
+                            },
+                            {
+                              "name": "TestServer"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "E2E Testing",
+                          "children": [
+                            {
+                              "name": "Selenium"
+                            },
+                            {
+                              "name": "Puppeteer Sharp"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "MicroServices",
+                      "children": [
+                        {
+                          "name": "Message-Broker",
+                          "children": [
+                            {
+                              "name": "RabbitMQ"
+                            },
+                            {
+                              "name": "Apache Kafka"
+                            },
+                            {
+                              "name": "ActiveMQ"
+                            },
+                            {
+                              "name": "Azure Service Bus"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Message-Bus",
+                          "children": [
+                            {
+                              "name": "MassTransit"
+                            },
+                            {
+                              "name": "NServiceBus"
+                            },
+                            {
+                              "name": "CAP"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Principle of software development",
+                      "children": [
+                        {
+                          "name": "YAGNI: You ain’t gonna need it"
+                        },
+                        {
+                          "name": "SoC: Separation of Concerns"
+                        },
+                        {
+                          "name": "TDA: Tell don’t ask"
+                        },
+                        {
+                          "name": "DRY : Do not repeat yourself"
+                        },
+                        {
+                          "name": "KISS : Keep it simple stupid"
+                        },
+                        {
+                          "name": "SOLID",
+                          "children": [
+                            {
+                              "name": "Single Responsibility Priniciple ( SRP )"
+                            },
+                            {
+                              "name": "Open-Closed Principle (OCP)"
+                            },
+                            {
+                              "name": "Liskov Substitution Principle (LSP)"
+                            },
+                            {
+                              "name": "Dependency Inversion Principle (DIP)"
+                            },
+                            {
+                              "name": "Interface Segregation Principle (ISP)"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Design Patterns",
+                      "children": [
+                        {
+                          "name": "CQRS"
+                        },
+                        {
+                          "name": "Decorator"
+                        },
+                        {
+                          "name": "Strategy"
+                        },
+                        {
+                          "name": "Observer"
+                        },
+                        {
+                          "name": "Builder"
+                        },
+                        {
+                          "name": "Singleton"
+                        },
+                        {
+                          "name": "Facade"
+                        },
+                        {
+                          "name": "Mediator"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
 
         // Set the dimensions and margins of the diagram
         var margin = { top: 20, right: 90, bottom: 30, left: 90 },
